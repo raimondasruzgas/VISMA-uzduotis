@@ -1,0 +1,17 @@
+C:\Users\raimo\Documents\GitHub\VISMA-uzduotis\VISMAtas\VISMAtas\bin\Debug\net6.0\VISMAtas.exe
+C:\Users\raimo\Documents\GitHub\VISMA-uzduotis\VISMAtas\VISMAtas\bin\Debug\net6.0\VISMAtas.deps.json
+C:\Users\raimo\Documents\GitHub\VISMA-uzduotis\VISMAtas\VISMAtas\bin\Debug\net6.0\VISMAtas.runtimeconfig.json
+C:\Users\raimo\Documents\GitHub\VISMA-uzduotis\VISMAtas\VISMAtas\bin\Debug\net6.0\VISMAtas.dll
+C:\Users\raimo\Documents\GitHub\VISMA-uzduotis\VISMAtas\VISMAtas\bin\Debug\net6.0\ref\VISMAtas.dll
+C:\Users\raimo\Documents\GitHub\VISMA-uzduotis\VISMAtas\VISMAtas\bin\Debug\net6.0\VISMAtas.pdb
+C:\Users\raimo\Documents\GitHub\VISMA-uzduotis\VISMAtas\VISMAtas\obj\Debug\net6.0\VISMAtas.csproj.AssemblyReference.cache
+C:\Users\raimo\Documents\GitHub\VISMA-uzduotis\VISMAtas\VISMAtas\obj\Debug\net6.0\VISMAtas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\raimo\Documents\GitHub\VISMA-uzduotis\VISMAtas\VISMAtas\obj\Debug\net6.0\VISMAtas.AssemblyInfoInputs.cache
+C:\Users\raimo\Documents\GitHub\VISMA-uzduotis\VISMAtas\VISMAtas\obj\Debug\net6.0\VISMAtas.AssemblyInfo.cs
+C:\Users\raimo\Documents\GitHub\VISMA-uzduotis\VISMAtas\VISMAtas\obj\Debug\net6.0\VISMAtas.csproj.CoreCompileInputs.cache
+C:\Users\raimo\Documents\GitHub\VISMA-uzduotis\VISMAtas\VISMAtas\obj\Debug\net6.0\VISMAtas.dll
+C:\Users\raimo\Documents\GitHub\VISMA-uzduotis\VISMAtas\VISMAtas\obj\Debug\net6.0\ref\VISMAtas.dll
+C:\Users\raimo\Documents\GitHub\VISMA-uzduotis\VISMAtas\VISMAtas\obj\Debug\net6.0\VISMAtas.pdb
+C:\Users\raimo\Documents\GitHub\VISMA-uzduotis\VISMAtas\VISMAtas\obj\Debug\net6.0\VISMAtas.genruntimeconfig.cache
+C:\Users\raimo\Documents\GitHub\VISMA-uzduotis\VISMAtas\VISMAtas\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\raimo\Documents\GitHub\VISMA-uzduotis\VISMAtas\VISMAtas\obj\Debug\net6.0\VISMAtas.csproj.CopyComplete
