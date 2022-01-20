@@ -86,6 +86,7 @@ namespace VISMAtas
             Console.WriteLine("Kuriamas susitikimas ...");
             var meeting = new Meeting()
             {
+                Id = DB.Index.NextMeetingId++,
                 Name = UI_Helper.AskForString("Iveskite susitikimo pavadinima : "),
                 ResponsiblePersonId = DB.CurrentUser.Id,
                 Description = UI_Helper.AskForString("Iveskite susitikimo aprasyma : "),
@@ -104,20 +105,99 @@ namespace VISMAtas
         public static void Delete()
         {
             Console.Clear();
-            Console.WriteLine("Trinamas susitikimas ...");
+            var variants = DB.Meetings.Select(x => x.Name).ToArray();
+            var selection = UI_Helper.AskForSelection(variants, "Pasirinkite trinama susirinkima : ");
+            var meeting = DB.Meetings[selection];
+            if (meeting.ResponsiblePersonId == DB.CurrentUser.Id)
+            {
+                DB.Meetings.Remove(meeting);
+                DB.SaveChanges();
+                Console.Clear();
+                Console.WriteLine("Susitikimas {0} istrintas", meeting.Name);
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Susitikimo {0} istrinti negalima. Nesate jo savaininkas! ", meeting.Name);
+                Console.ReadKey();
+            }
+
         }
 
         public static void AddPerson()
         {
             Console.Clear();
-            Console.WriteLine("Pridedamas zmogus i susitikima ...");
+            var variantsMeeting = DB.Meetings.Select(x => x.Name).ToArray();
+            var selectionMeeting = UI_Helper.AskForSelection(variantsMeeting, "Pasirinkite susitikima : ");
+            var meeting = DB.Meetings[selectionMeeting];
+
+            var variantsUser = DB.Users.Select(x => x.Name).ToArray();
+            var selectionUser = UI_Helper.AskForSelection(variantsUser, "Pasirinkite pridedama zmogu : ");
+            var user = DB.Users[selectionUser];
+
+
+            var intersects = DB.Meetings.Where(x => x.People.Contains(user) && meeting.Between(x.StartDate, x.EndDate)).ToList();
+
+            if (!meeting.People.Contains(user))
+            {
+                Console.Clear();
+                var key = ConsoleKey.Y;
+                if (intersects.Count > 0)
+                {
+                    foreach (var item in intersects)
+                    {
+                        Console.WriteLine("Pridedamas susitikimas kertasi su {0}", item.Name);
+                    }
+                    Console.WriteLine("Ar norite testi ? Y/N");
+                    key = Console.ReadKey().Key;
+
+                }
+                if (key == ConsoleKey.Y)
+                {
+                    meeting.People.Add(user);
+                    Console.Clear();
+                    Console.WriteLine("Pridedamas ({0}) vartotojas prie susitikimo -{1}- laiku -{2}-", user.Name, meeting.Name, meeting.StartDate);
+                    Console.ReadKey();
+                }
+
+
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Zmogus - {0} - jau pridetas i susitikima - {1} - ", user.Name, meeting.Name);
+                Console.ReadKey();
+            }
         }
 
         public static void RemovePerson()
         {
             Console.Clear();
-            Console.WriteLine("Pasalinamas zmogus is susitikimo ...");
+            
+            var variantsMeeting = DB.Meetings.Select(x => x.Name).ToArray();
+            var selectionMeeting = UI_Helper.AskForSelection(variantsMeeting, "Pasirinkite susitikima : ");
+            var meeting = DB.Meetings[selectionMeeting];
 
+            var variantsUser = meeting.People.Select(x => x.Name).ToArray();
+            var selectionUser = UI_Helper.AskForSelection(variantsUser, "Pasirinkite pasalinama zmogu : ");
+            var user = meeting.People[selectionUser];
+
+            
+            if (meeting.ResponsiblePersonId != user.Id)
+            {
+                meeting.People.Remove(user);
+                DB.SaveChanges();
+                Console.WriteLine("Zmokus - {0} - pasalintas is susitikimo -{1}-", user.Name, meeting.Name);
+                
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Negalima pasalinti susitikimo kurejo!");
+                Console.ReadKey();
+            }
         }
 
         public static void GetAll()
@@ -169,6 +249,13 @@ namespace VISMAtas
             
             
             
+        }
+
+        public static bool Between(this Meeting current, DateTime start, DateTime end)
+        {
+            bool startCheck = start <= current.StartDate && current.StartDate <= end;
+            bool endCheck = start <= current.EndDate && current.EndDate <= end;
+            return startCheck || endCheck;
         }
 
     }
