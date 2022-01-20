@@ -208,11 +208,11 @@ namespace VISMAtas
             {
                 Console.Clear();
                 Console.WriteLine("Rodomi susitikimai ...");
-                Console.WriteLine("Esc - baigti");
+                Console.WriteLine("X - baigti");
                 Console.WriteLine("f - filtruoti");
                 screen.ForEach(x => Console.WriteLine(x));
                 var key = Console.ReadKey();
-                if (key.Key == ConsoleKey.Escape) exit = true;
+                if (key.Key == ConsoleKey.X) exit = true;
                 if (key.Key == ConsoleKey.F)
                 {
                     var selection = UI_Helper.AskForSelection(FILTER_VARIANTS, "Pasirinkite filtra : ");
